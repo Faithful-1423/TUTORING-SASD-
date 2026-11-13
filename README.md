@@ -16,3 +16,4 @@ Open `front-end/index.html` in a browser to view the home page. Open `front-end/
 ## Current status
 
 This is a work in progress, not a production tutoring or account service. The class list is sample front-end content, the About Us and Contact sections still contain placeholder text, and the login/sign-up forms do not connect to a backend. Some navigation links are currently tied to a developer's local file paths and may need updating to work in other environments.
+(We are currently trying to get this approved by the school and have this no longer blocked)
