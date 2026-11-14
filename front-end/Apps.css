@@ -502,6 +502,10 @@ input:hover {
     transform: translate(-50%, -50%);
 }
 
+.textIndent {
+    text-indent: 100px;
+}
+
 /*BOTTOM*/
 #bottom {
     box-sizing: border-box;
@@ -553,5 +557,11 @@ input:hover {
 @media (max-width: 600px) {
     .about-contact {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .class-card {
+        height:80px;
     }
 }
