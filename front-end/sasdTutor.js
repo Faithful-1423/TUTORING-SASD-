@@ -57,6 +57,10 @@ Object.entries(classesBySubject).forEach(([subject, classes]) => {
     const card = document.createElement("div");
     card.className = "class-card";
     card.dataset.tooltip = subject.toUpperCase();
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", subject);
+    card.setAttribute("aria-expanded", "false");
     card.append(document.createTextNode(subject));
 
     const icon = document.createElement("span");
@@ -66,6 +70,9 @@ Object.entries(classesBySubject).forEach(([subject, classes]) => {
 
     const dropdown = document.createElement("div");
     dropdown.className = "dropdown";
+    dropdown.id = `class-details-${subject.toLowerCase()}`;
+    dropdown.setAttribute("aria-hidden", "true");
+    card.setAttribute("aria-controls", dropdown.id);
 
     const list = document.createElement("ul");
     classes.forEach((className) => {
@@ -76,5 +83,20 @@ Object.entries(classesBySubject).forEach(([subject, classes]) => {
 
     dropdown.append(list);
     card.append(dropdown);
+
+    const toggleDetails = () => {
+        const isOpen = card.classList.toggle("is-open");
+        card.setAttribute("aria-expanded", String(isOpen));
+        dropdown.setAttribute("aria-hidden", String(!isOpen));
+    };
+
+    card.addEventListener("click", toggleDetails);
+    card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleDetails();
+        }
+    });
+
     classGrid.append(card);
 });
